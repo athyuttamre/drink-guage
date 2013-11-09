@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background" >
+
+    <TextView
+        android:id="@+id/tvDrinkNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/tvDrinkSubText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDrinkNumber"
+        android:layout_centerHorizontal="true"
+        android:text="Drinks" />
+
+    <Button
+        android:id="@+id/PlusOne"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDrinkNumber"
+        android:layout_marginTop="38dp"
+        android:layout_toLeftOf="@+id/tvDrinkNumber"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/SubOne"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/PlusOne"
+        android:layout_alignBottom="@+id/PlusOne"
+        android:layout_toRightOf="@+id/tvDrinkNumber"
+        android:text="-" />
+
+    <Button
+        android:id="@+id/Reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PlusOne"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Reset" />
+
+    <TextView
+        android:id="@+id/tvBAP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Reset"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:text="0%"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvBAPSubText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBAP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:text="Blood Alcohol Percentage" />
+
+
+</RelativeLayout>
