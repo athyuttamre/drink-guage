@@ -1,11 +1,12 @@
 package com.example.drinkgauge;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Window;
 import android.app.Activity;
 import android.content.Intent;
 
-public class Splash extends Activity {
+/**public class Splash extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +29,30 @@ public class Splash extends Activity {
 		};
 		timer.start();
 	}
+
+}**/
+
+public class Splash extends Activity {
+
+private static final int SPLASH_DISPLAY_TIME = 2000; /* 2 seconds */
+
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.splash);
+
+    new Handler().postDelayed(new Runnable() {
+
+        public void run() {
+
+            Intent mainIntent = new Intent(Splash.this,
+                    ProfileSetup.class);
+            Splash.this.startActivity(mainIntent);
+
+            Splash.this.finish();
+            overridePendingTransition(R.anim.mainfadein,
+                    R.anim.splashfadeout);
+        }
+    }, SPLASH_DISPLAY_TIME);
+}
 
 }

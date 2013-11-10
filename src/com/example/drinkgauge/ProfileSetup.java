@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProfileSetup extends Activity{
 	
@@ -67,13 +68,28 @@ public class ProfileSetup extends Activity{
 				
 				editor.commit(); **/
 				
-				pushBooleanToPrefs("rb1", rb1.isChecked(), getBaseContext());
-				pushBooleanToPrefs("rb2", rb2.isChecked(), getBaseContext());
-				pushStringToPrefs("text1", text1.getText().toString(), getBaseContext());
-				pushLongToPrefs("starttime", starttime, getBaseContext());
-				
-				Intent i = new Intent(ProfileSetup.this, Core.class);
-				startActivity(i);
+				if ((!(rb1.isChecked() || rb2.isChecked())) || (text1.getText().toString().isEmpty())) {
+					if ((!(rb1.isChecked() || rb2.isChecked())) && (text1.getText().toString().isEmpty())) {
+						Toast msg = Toast.makeText(getBaseContext(), "Please pick a gender and enter your weight!", Toast.LENGTH_LONG);
+						msg.show();
+					}
+					else if (text1.getText().toString().isEmpty()) {
+						Toast msg = Toast.makeText(getBaseContext(), "Please enter your weight!", Toast.LENGTH_LONG);
+						msg.show();
+					}
+					else {
+						Toast msg = Toast.makeText(getBaseContext(), "Please pick a gender!", Toast.LENGTH_LONG);
+						msg.show();
+					}
+				} else {
+					pushBooleanToPrefs("rb1", rb1.isChecked(), getBaseContext());
+					pushBooleanToPrefs("rb2", rb2.isChecked(), getBaseContext());
+					pushStringToPrefs("text1", text1.getText().toString(), getBaseContext());
+					pushLongToPrefs("starttime", starttime, getBaseContext());
+					
+					Intent i = new Intent(ProfileSetup.this, Core.class);
+					startActivity(i);
+				}
 			}
 		});
 	  }

@@ -82,8 +82,6 @@ public class Core extends Activity{
 					tvBAP.setText("0.0%");
 					pushLongToPrefs("starttime", 0, getBaseContext());
 					tvDrinkNumber.setText(Integer.toString(0));
-				
-
 			}
 		});
 		
@@ -99,14 +97,13 @@ public class Core extends Activity{
 					int numdrinks = (Integer.parseInt(tvDrinkNumber.getText().toString())) - 1;
 					
 					if (numdrinks <= -1) {
-						long myTime = System.currentTimeMillis();
+						/** long myTime = System.currentTimeMillis();
 						double timeDiff = (myTime - (pullLongFromPrefs("starttime", getBaseContext()))) / 3600000;
 						double bap = calculateBAP(isMale, weight, timeDiff, numdrinks + 1);
-						tvBAP.setText(Double.toString(bap) + "%");
+						tvBAP.setText(Double.toString(bap) + "%"); **/
 						Toast msg = Toast.makeText(getBaseContext(), "No drinks here!", Toast.LENGTH_LONG);
 						msg.show();
-					}
-					else {
+					} else {
 						long myTime = System.currentTimeMillis();
 						double timeDiff = (myTime - (pullLongFromPrefs("starttime", getBaseContext()))) / 3600000;
 						double bap = calculateBAP(isMale, weight, timeDiff, numdrinks);
@@ -169,6 +166,5 @@ public class Core extends Activity{
 		}
 		return (Math.floor(result * 1000))/1000;
 	}
-
 
 }
