@@ -63,6 +63,7 @@ public class Core extends Activity{
 						long myTime = System.currentTimeMillis();
 						double timeDiff = (myTime - (pullLongFromPrefs("starttime", getBaseContext()))) / 3600000;
 						double bap = calculateBAP(isMale, weight, timeDiff, numdrinks);
+						setBackground(bap);
 						tvBAP.setText(Double.toString(bap) + "%");
 					}
 					
@@ -82,6 +83,7 @@ public class Core extends Activity{
 					tvBAP.setText("0.0%");
 					pushLongToPrefs("starttime", 0, getBaseContext());
 					tvDrinkNumber.setText(Integer.toString(0));
+					setBackground(0);
 			}
 		});
 		
@@ -107,6 +109,7 @@ public class Core extends Activity{
 						long myTime = System.currentTimeMillis();
 						double timeDiff = (myTime - (pullLongFromPrefs("starttime", getBaseContext()))) / 3600000;
 						double bap = calculateBAP(isMale, weight, timeDiff, numdrinks);
+						setBackground(bap);
 						if (numdrinks == 1)
 								tvDrinkSubText.setText("Drink");
 						else
@@ -114,7 +117,6 @@ public class Core extends Activity{
 						tvBAP.setText(Double.toString(bap) + "%");
 						tvDrinkNumber.setText(Integer.toString(numdrinks--));
 					}
-
 			}
 		});
 
@@ -166,5 +168,41 @@ public class Core extends Activity{
 		}
 		return (Math.floor(result * 1000))/1000;
 	}
-
+	
+	public void setBackground(double AP) {
+		View back = (View) findViewById(R.id.mainLayout);
+		if (AP <= 0.03) {
+			back.setBackgroundColor(0x6B0B705E);
+		}
+		else if (AP <= 0.06) {
+			back.setBackgroundColor(0xAC0E5091);
+		}
+		else if (AP <= 0.08) {
+			back.setBackgroundColor(0xD30B7049);
+		}
+		else if (AP <= 0.11) {
+			back.setBackgroundColor(0xD30A003E);
+		}
+		else if (AP <= 0.13) {
+			back.setBackgroundColor(0xE0078042);
+		}
+		else if (AP <= 0.16) {
+			back.setBackgroundColor(0xCB04A041);
+		}
+		else if (AP <= 0.19) {
+			back.setBackgroundColor(0xA1036036);
+		}
+		else if (AP <= 0.21) {
+			back.setBackgroundColor(0x88039041);
+		}
+		else if (AP <= 0.24) {
+			back.setBackgroundColor(0x6C02B03C);
+		}
+		else if (AP <= 0.27) {
+			back.setBackgroundColor(0x64060050);
+		}
+		else {
+			back.setBackgroundResource(R.drawable.background);
+		}
+	}
 }
